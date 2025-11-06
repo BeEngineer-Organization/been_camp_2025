@@ -1,0 +1,863 @@
+/* ============================================
+   BeEngineer Programming Camp - Styles
+   ロゴスランド風デザイン
+   ============================================ */
+
+:root {
+  /* メインカラー */
+  --color-primary: #0E8B62;
+  --color-secondary: #F47F2E;
+  --color-accent: #FF6B6B;
+  --color-bg: #FAFAF8;
+  --color-white: #FFFFFF;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  
+  /* パステルカラー */
+  --color-pastel-blue: #A8D5E2;
+  --color-pastel-yellow: #FFF4B8;
+  --color-pastel-pink: #FFD4D4;
+  --color-pastel-green: #C8E6C9;
+  
+  /* レイアウト */
+  --sidebar-width: 240px;
+  --spacing-unit: 1rem;
+  --border-radius: 16px;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================
+   リセット & ベース
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', 'Yu Gothic UI', 'Meiryo', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* ============================================
+   サイドバー（左側固定）
+   ============================================ */
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: linear-gradient(180deg, var(--color-primary) 0%, #0a6d4d 100%);
+  color: var(--color-white);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sidebar-logo h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-logo p {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+.sidebar-nav {
+  flex: 1;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.sidebar-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.sidebar-footer {
+  text-align: center;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-top: auto;
+}
+
+/* ============================================
+   メインコンテンツエリア
+   ============================================ */
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+}
+
+/* ============================================
+   ヒーローセクション
+   ============================================ */
+
+.hero {
+  position: relative;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-pastel-blue) 0%, var(--color-pastel-yellow) 50%, var(--color-pastel-pink) 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23A8D5E2" width="1200" height="600"/></svg>');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-panel {
+  background-color: var(--color-white);
+  padding: 3rem 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.hero-panel:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+}
+
+.hero-date {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.hero-location {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+}
+
+.hero-cta {
+  margin-top: 2rem;
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #ff9a5a 100%);
+  color: var(--color-white);
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ============================================
+   セクション共通スタイル
+   ============================================ */
+
+.section {
+  padding: 5rem 3rem;
+}
+
+.section:nth-child(even) {
+  background-color: var(--color-white);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  border-radius: 2px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   カードUI
+   ============================================ */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-orange {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #ff9a5a 100%);
+  color: var(--color-white);
+}
+
+.card-green {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #12a876 100%);
+  color: var(--color-white);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.card-content {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* ============================================
+   開催概要
+   ============================================ */
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.overview-item {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  border-left: 5px solid var(--color-secondary);
+}
+
+.overview-label {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.overview-value {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* ============================================
+   学習内容
+   ============================================ */
+
+.chapter-number {
+  font-size: 1rem;
+  font-weight: bold;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   スケジュール表
+   ============================================ */
+
+.schedule-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  background-color: var(--color-white);
+}
+
+.schedule-table th {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0a6d4d 100%);
+  color: var(--color-white);
+  padding: 1.2rem;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.schedule-table td {
+  padding: 1.5rem 1.2rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.schedule-table tr:last-child td {
+  border-bottom: none;
+}
+
+.schedule-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.day-label {
+  font-weight: bold;
+  color: var(--color-secondary);
+  font-size: 1.1rem;
+}
+
+.time-slot {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
+.activity {
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+/* ============================================
+   持ち物リスト
+   ============================================ */
+
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-white);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.checklist-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.checklist-item input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.checklist-item label {
+  cursor: pointer;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.checklist-item.checked {
+  background-color: var(--color-pastel-green);
+  opacity: 0.7;
+}
+
+.checklist-item.checked label {
+  text-decoration: line-through;
+}
+
+/* ============================================
+   アクセス
+   ============================================ */
+
+.access-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.access-info {
+  background-color: var(--color-white);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.access-info h3 {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.access-info p {
+  margin-bottom: 0.8rem;
+  line-height: 1.8;
+}
+
+.map-container {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  height: 400px;
+  background-color: var(--color-pastel-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.map-placeholder {
+  text-align: center;
+  color: var(--color-text-light);
+  padding: 2rem;
+}
+
+/* ============================================
+   お問い合わせ
+   ============================================ */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.contact-card {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #ff9a5a 100%);
+  color: var(--color-white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.contact-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.contact-card a {
+  color: var(--color-white);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ============================================
+   フッター
+   ============================================ */
+
+.footer {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0a6d4d 100%);
+  color: var(--color-white);
+  padding: 3rem;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.footer-info {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.footer-links a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.footer-copyright {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 2rem;
+}
+
+/* ============================================
+   ブログ（daily-template用）
+   ============================================ */
+
+.blog-header {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, var(--color-pastel-green) 0%, var(--color-pastel-blue) 100%);
+}
+
+.blog-title {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.blog-meta {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
+.blog-content {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.blog-section {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.blog-section h2 {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-section p {
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.blog-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.blog-image {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.blog-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.blog-image-placeholder {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, var(--color-pastel-yellow) 0%, var(--color-pastel-pink) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.back-to-home {
+  display: inline-block;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 50px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.back-to-home:hover {
+  background-color: #0a6d4d;
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   レスポンシブデザイン
+   ============================================ */
+
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 200px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .section {
+    padding: 4rem 2rem;
+  }
+  
+  .access-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 1.5rem;
+  }
+  
+  .sidebar-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .sidebar-nav li {
+    margin-bottom: 0;
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .hero {
+    height: 70vh;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-date {
+    font-size: 1.2rem;
+  }
+  
+  .section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .schedule-table {
+    font-size: 0.9rem;
+  }
+  
+  .schedule-table th,
+  .schedule-table td {
+    padding: 1rem 0.8rem;
+  }
+  
+  .checklist {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .blog-images {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-panel {
+    padding: 2rem 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section {
+    padding: 2rem 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .schedule-table th,
+  .schedule-table td {
+    padding: 0.8rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================
+   アクセシビリティ
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* フォーカス表示 */
+a:focus,
+button:focus,
+input:focus {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   ユーティリティクラス
+   ============================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.highlight {
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
