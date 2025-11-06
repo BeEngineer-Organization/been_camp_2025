@@ -356,6 +356,16 @@ a {
   line-height: 1.6;
 }
 
+/* 開催情報バーのボタン */
+#overview a {
+  display: inline-block;
+}
+
+#overview a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
 /* ============================================
    学習内容
    ============================================ */
@@ -579,6 +589,17 @@ a {
   margin-bottom: 1rem;
 }
 
+.footer-logo a {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer-logo a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 .footer-info {
   font-size: 0.95rem;
   opacity: 0.9;
@@ -592,9 +613,9 @@ a {
   margin: 1.5rem 0;
 }
 
-.footer-links a:hover {
-  opacity: 0.8;
-  text-decoration: underline;
+.footer-links span {
+  font-size: 0.95rem;
+  opacity: 0.9;
 }
 
 .footer-copyright {
