@@ -122,6 +122,58 @@ a {
   transform: translateX(5px);
 }
 
+/* サブメニュー（ドロップダウン） */
+.sidebar-nav .has-submenu {
+  position: relative;
+}
+
+.sidebar-nav .submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  min-width: 150px;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #ff9a5a 100%);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.sidebar-nav .has-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.sidebar-nav .submenu li {
+  margin: 0;
+}
+
+.sidebar-nav .submenu a {
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.sidebar-nav .submenu li:first-child a {
+  border-radius: 8px 8px 0 0;
+}
+
+.sidebar-nav .submenu li:last-child a {
+  border-radius: 0 0 8px 8px;
+}
+
+.sidebar-nav .submenu a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
 .sidebar-footer {
   text-align: center;
   font-size: 0.7rem;
@@ -178,12 +230,11 @@ a {
   padding: 3rem 2.5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-soft);
-  transform: rotate(-1deg);
   transition: transform 0.3s ease;
 }
 
 .hero-panel:hover {
-  transform: rotate(0deg) scale(1.02);
+  transform: scale(1.02);
 }
 
 .hero-title {
@@ -264,6 +315,26 @@ a {
   border-radius: 2px;
 }
 
+.section-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+}
+
+.section-desc {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-text-light);
+}
+
+.section-note {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -326,44 +397,73 @@ a {
 }
 
 /* ============================================
-   開催概要
+   開催情報バー（開催概要）
    ============================================ */
+
+.overview-section {
+  padding: 3rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #12a876 100%);
+}
 
 .overview-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  color: var(--color-white);
 }
 
-.overview-item {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius);
+.overview-card {
+  text-align: center;
   padding: 2rem;
-  box-shadow: var(--shadow-soft);
-  border-left: 5px solid var(--color-secondary);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
 }
 
-.overview-label {
-  font-size: 0.9rem;
-  color: var(--color-text-light);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+.overview-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
-.overview-value {
+.overview-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--color-white);
+}
+
+.overview-main {
   font-size: 1.1rem;
-  color: var(--color-text);
-  line-height: 1.6;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
-/* 開催情報バーのボタン */
-#overview a {
+.overview-sub {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.overview-address {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.overview-btn {
   display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-#overview a:hover {
+.overview-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================
@@ -375,6 +475,20 @@ a {
   font-weight: bold;
   opacity: 0.8;
   margin-bottom: 0.5rem;
+}
+
+/* プログラムカードのトグル機能（SP用） */
+.card-header {
+  position: relative;
+}
+
+.toggle-icon {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
 }
 
 /* ============================================
@@ -403,6 +517,7 @@ a {
 .schedule-table td {
   padding: 1.5rem 1.2rem;
   border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
 }
 
 .schedule-table tr:last-child td {
@@ -417,16 +532,50 @@ a {
   font-weight: bold;
   color: var(--color-secondary);
   font-size: 1.1rem;
+  position: relative;
+}
+
+.schedule-toggle-icon {
+  display: none;
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.time-slot,
+.activity {
+  padding: 0.6rem 0.5rem;
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  line-height: 1.6;
+  height: 2.8rem;
+}
+
+.time-slot:last-child,
+.activity:last-child {
+  margin-bottom: 0;
 }
 
 .time-slot {
   color: var(--color-text-light);
   font-size: 0.95rem;
+  font-weight: 600;
+  background-color: rgba(14, 139, 98, 0.05);
 }
 
 .activity {
   color: var(--color-text);
   font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.activity:hover {
+  background-color: rgba(244, 127, 46, 0.05);
 }
 
 /* ============================================
@@ -507,6 +656,51 @@ a {
   line-height: 1.8;
 }
 
+.access-subtitle {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.access-arrow {
+  margin-top: 0.5rem;
+}
+
+.access-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.access-note-yellow {
+  background-color: var(--color-pastel-yellow);
+}
+
+.access-note-blue {
+  background-color: var(--color-pastel-blue);
+}
+
+.access-map {
+  border: 0;
+}
+
+/* SP版用のアクセス項目（デフォルトで非表示） */
+.access-mobile {
+  display: none;
+}
+
+/* SP版用の持ち物リスト（デフォルトで非表示） */
+.items-mobile {
+  display: none;
+}
+
+/* SP版用のスケジュールコンテナ（デフォルトで非表示） */
+.schedule-mobile-container {
+  display: none;
+}
+
 .map-container {
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -567,6 +761,15 @@ a {
   text-decoration: underline;
 }
 
+.contact-card-emergency {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #12a876 100%);
+}
+
+.contact-note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
 /* ============================================
    フッター
    ============================================ */
@@ -587,6 +790,7 @@ a {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .footer-logo a {
@@ -645,6 +849,10 @@ a {
   font-size: 0.95rem;
 }
 
+.meta-separator {
+  margin: 0 1rem;
+}
+
 .blog-content {
   max-width: 900px;
   margin: 3rem auto;
@@ -700,6 +908,19 @@ a {
   font-size: 0.9rem;
 }
 
+.blog-closing {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
+.blog-navigation {
+  text-align: center;
+  margin-top: 3rem;
+}
+
 .back-to-home {
   display: inline-block;
   margin: 2rem auto;
@@ -715,6 +936,70 @@ a {
 .back-to-home:hover {
   background-color: #0a6d4d;
   transform: translateY(-3px);
+}
+
+/* ============================================
+   ハンバーガーメニュー（SP用）
+   ============================================ */
+
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2000;
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-white);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* オーバーレイ */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+  display: block;
+  opacity: 1;
 }
 
 /* ============================================
@@ -740,21 +1025,206 @@ a {
 }
 
 @media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
+  /* SP版：サブメニューを下に表示（タップで開閉） */
+  .sidebar-nav .submenu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, #ff9a5a 100%);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+  }
+  
+  .sidebar-nav .has-submenu.active .submenu {
+    max-height: 200px;
+  }
+  
+  .sidebar-nav .submenu a {
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+  }
+  
+  .sidebar-nav .has-submenu > a {
     position: relative;
-    padding: 1.5rem;
+    padding-right: 2.5rem;
+  }
+  
+  .sidebar-nav .has-submenu > a::after {
+    content: '▼';
+    position: absolute;
+    right: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-nav .has-submenu.active > a::after {
+    transform: rotate(180deg);
+  }
+  
+  /* アクセス：PC版を非表示、SP版を表示 */
+  .access-pc {
+    display: none;
+  }
+  
+  .access-mobile {
+    display: block;
+  }
+  
+  .access-item {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  
+  .access-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #12a876 100%);
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: 1.05rem;
+  }
+  
+  .access-toggle-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .access-item-content {
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+  
+  .access-item.active .access-item-content {
+    max-height: 1000px;
+    opacity: 1;
+    padding: 1rem;
+  }
+  
+  .access-item.active .access-toggle-icon {
+    transform: rotate(180deg);
+  }
+  
+  .access-item-content p {
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+  }
+  
+  .access-item-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .map-container-mobile {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+  
+  .map-container-mobile iframe {
+    width: 100%;
+    height: 250px;
+  }
+  
+  /* 持ち物リスト：PC版を非表示、SP版を表示 */
+  .checklist-pc {
+    display: none;
+  }
+  
+  .items-mobile {
+    display: block;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+  }
+  
+  .items-mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, #ff9a5a 100%);
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: 1.05rem;
+  }
+  
+  .items-toggle-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .items-mobile-content {
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+  
+  .items-mobile.active .items-mobile-content {
+    max-height: 2000px;
+    opacity: 1;
+    padding: 1rem;
+  }
+  
+  .items-mobile.active .items-toggle-icon {
+    transform: rotate(180deg);
+  }
+  
+  .items-mobile .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  /* ハンバーガーメニュー表示 */
+  .hamburger {
+    display: flex;
+  }
+  
+  /* サイドバーをスライドメニュー化 */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--color-primary) 0%, #0a6d4d 100%);
+    padding: 2rem 1.5rem;
+    z-index: 1500;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+  }
+  
+  .sidebar.active {
+    left: 0;
   }
   
   .sidebar-nav ul {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0;
   }
   
   .sidebar-nav li {
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .sidebar-nav a {
+    padding: 1rem;
+    font-size: 1rem;
   }
   
   .main-content {
@@ -765,16 +1235,72 @@ a {
     height: 70vh;
   }
   
+  .hero-content {
+    max-width: 95%;
+    width: 95%;
+    padding: 1rem;
+  }
+  
+  .hero-panel {
+    padding: 2rem;
+    width: 100%;
+  }
+  
   .hero-title {
     font-size: 2rem;
+    margin-bottom: 1rem;
   }
   
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
   
   .hero-date {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-location {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+  
+  /* 開催情報バーをSP版で2列横並びに */
+  .overview-section {
+    padding: 2rem 1rem;
+  }
+  
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .overview-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .overview-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .overview-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .overview-main,
+  .overview-sub,
+  .overview-address {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .overview-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
   }
   
   .section {
@@ -787,6 +1313,132 @@ a {
   
   .card-grid {
     grid-template-columns: 1fr;
+  }
+  
+  /* プログラムカードのトグル機能をSP版で有効化 */
+  .program-card .card-header {
+    cursor: pointer;
+    padding-bottom: 1rem;
+  }
+  
+  .toggle-icon {
+    display: block;
+  }
+  
+  .program-card .card-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+  }
+  
+  .program-card.active .card-content {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 1rem;
+  }
+  
+  .program-card.active .toggle-icon {
+    transform: rotate(180deg);
+  }
+  
+  /* スケジュールのトグル機能をSP版で有効化 */
+  .schedule-table thead {
+    display: none;
+  }
+  
+  .schedule-row {
+    display: block;
+    margin-bottom: 1rem;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+  }
+  
+  .schedule-row .day-label {
+    display: block;
+    padding: 1.2rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, #ff9a5a 100%);
+    color: var(--color-white);
+    font-size: 1.1rem;
+    position: relative;
+  }
+  
+  .schedule-toggle-icon {
+    display: inline-block;
+  }
+  
+  .schedule-row .schedule-detail {
+    display: block;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+  
+  .schedule-row.active .schedule-detail {
+    max-height: 2000px;
+    opacity: 1;
+    padding: 1rem;
+  }
+  
+  /* 元の時間と内容セルを非表示 */
+  .schedule-row .schedule-detail > .time-slot,
+  .schedule-row .schedule-detail > .activity {
+    display: none;
+  }
+  
+  .schedule-row .schedule-detail:nth-child(3) {
+    display: none;
+  }
+  
+  /* モバイルコンテナのスタイル */
+  .schedule-mobile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .schedule-pair {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .schedule-pair .time-slot {
+    grid-column: 1;
+    margin-bottom: 0;
+    border-radius: 0;
+    border-right: 2px solid rgba(14, 139, 98, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: rgba(14, 139, 98, 0.1);
+    height: auto;
+    min-height: 3rem;
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .schedule-pair .activity {
+    grid-column: 2;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: var(--color-white);
+    height: auto;
+    min-height: 3rem;
+    padding: 0.8rem 1rem;
+  }
+  
+  .schedule-row.active .schedule-toggle-icon {
+    transform: translateY(-50%) rotate(180deg);
   }
   
   .schedule-table {
@@ -806,22 +1458,112 @@ a {
     grid-template-columns: 1fr;
   }
   
+  .contact-card {
+    padding: 1.8rem 1.5rem;
+  }
+  
+  .contact-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .contact-card-emergency h3 {
+    font-size: 1rem;
+  }
+  
+  .contact-card a {
+    font-size: 1rem;
+  }
+  
+  .contact-note {
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+  }
+  
   .blog-images {
     grid-template-columns: 1fr;
+  }
+  
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    gap: 1rem 2rem;
+  }
+  
+  .footer-links span {
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
+  .hero-content {
+    max-width: 92%;
+    width: 92%;
+    padding: 0.5rem;
+  }
+  
   .hero-panel {
-    padding: 2rem 1.5rem;
+    padding: 1.75rem;
+    width: 100%;
   }
   
   .hero-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
   }
   
   .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+  }
+  
+  .hero-date {
     font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .hero-location {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+  }
+  
+  .hero-cta {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+  }
+  
+  /* 開催情報バーをさらにコンパクトに */
+  .overview-section {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .overview-card {
+    padding: 1.2rem 0.8rem;
+  }
+  
+  .overview-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .overview-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .overview-main,
+  .overview-sub,
+  .overview-address {
+    font-size: 0.7rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+  
+  .overview-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.7rem;
   }
   
   .section {
@@ -836,6 +1578,28 @@ a {
   .schedule-table td {
     padding: 0.8rem 0.5rem;
     font-size: 0.85rem;
+  }
+  
+  .contact-card {
+    padding: 1.5rem 1.2rem;
+  }
+  
+  .contact-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .contact-card-emergency h3 {
+    font-size: 0.9rem;
+  }
+  
+  .contact-card a {
+    font-size: 0.95rem;
+  }
+  
+  .contact-note {
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -880,5 +1644,24 @@ input:focus {
 .highlight {
   color: var(--color-secondary);
   font-weight: bold;
+}
+
+/* SP専用改行制御 */
+.sp-br {
+  display: none;
+}
+
+.pc-br {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .sp-br {
+    display: inline;
+  }
+  
+  .pc-br {
+    display: none;
+  }
 }
 
