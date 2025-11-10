@@ -26,6 +26,7 @@
         <nav class="sidebar-nav">
             <ul>
                 <li><a href="#hero">🏠 トップ</a></li>
+                <li><a href="#guide">📢 ご案内</a></li>
                 <li><a href="#overview">📅 日程・会場</a></li>
                 <li><a href="#program">💻 学習内容</a></li>
                 <li><a href="#schedule">⏰ スケジュール</a></li>
@@ -68,6 +69,31 @@
                 <div class="hero-date">11/22<small>(土)</small> ー 11/24<small>(月・祝)</small></div>
                 <div class="hero-location">📍 ロゴスランド京都（京都府城陽市）</div>
                 <a href="#program" class="hero-cta">学習内容を見る ▼</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ご案内 -->
+        <section id="guide" class="section">
+            <div class="container">
+                <h2 class="section-title">ご案内</h2>
+                <div class="guide-content">
+                    <div class="guide-text">
+                        <p class="guide-main">初日13:00ごろから</p>
+                        <p class="guide-detail">
+                            <strong>JR奈良線・城陽駅の改札前</strong>でスタッフが待機しています<br>
+                            （写真の赤枠の範囲にいます！）
+                        </p>
+                        <p class="guide-detail">
+                            <strong>13:37発のバス</strong>までご案内します。
+                        </p>
+                        <p class="guide-note">
+                            ※一緒に乗車しますので、降車のタイミングもご案内します。
+                        </p>
+                    </div>
+                    <div class="guide-image">
+                        <img src="assets/guide/station.jpeg" alt="城陽駅 改札前の待ち合わせ場所" loading="lazy">
+                    </div>
                 </div>
             </div>
         </section>
@@ -155,20 +181,30 @@
                 2泊3日でプログラミングには合計16時間取り組みます。夜は振り返りを楽しむ時間、またはさらにプログラミングを進めることもできます！
                 </p>
                 
+                <!-- タブメニュー -->
+                <div class="schedule-tabs">
+                    <button class="tab-btn active" data-tab="schedule-day1">
+                        <span class="tab-emoji">📅</span> 1日目 - 11/22(土)
+                    </button>
+                    <button class="tab-btn" data-tab="schedule-day2">
+                        <span class="tab-emoji">📅</span> 2日目 - 11/23(日)
+                    </button>
+                    <button class="tab-btn" data-tab="schedule-day3">
+                        <span class="tab-emoji">📅</span> 3日目 - 11/24(月祝)
+                    </button>
+                </div>
+                
                 <table class="schedule-table">
                     <thead>
                         <tr>
-                        <th>日程</th>
                         <th>時間</th>
+                        <th>場所</th>
                         <th>内容</th>
+                        <th>備考</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="schedule-row" data-schedule-row>
-                            <td class="day-label">
-                                <span class="day-text">1日目<br>11/22(土)</span>
-                                <span class="schedule-toggle-icon">▼</span>
-                            </td>
+                        <tr class="schedule-row tab-content active" id="schedule-day1">
                             <td class="schedule-detail">
                                 <div class="time-slot">13:00～14:00</div>
                                 <div class="time-slot">14:00～15:00</div>
@@ -178,21 +214,35 @@
                                 <div class="time-slot">19:00～21:00</div>
                                 <div class="time-slot">21:00～24:00</div>
                             </td>
+                            <td class="schedule-detail schedule-location">
+                                <div class="location-item">受付<br>エントランス</div>
+                                <div class="location-item">研修室1～3</div>
+                                <div class="location-item">研修室1～4</div>
+                                <div class="location-item">1Fレストラン</div>
+                                <div class="location-item">研修室1～4</div>
+                                <div class="location-item">研修室1～4</div>
+                                <div class="location-item">各部屋</div>
+                            </td>
                             <td class="schedule-detail">
-                                <div class="activity">🚗 集合（受付エントランス）<br>※　スタッフが案内します</div>
-                                <div class="activity">🎤 開会式（研修室1～3）</div>
-                                <div class="activity">💻 授業（研修室1～4）</div>
-                                <div class="activity">🍜 夕食（1Fレストラン）</div>
-                                <div class="activity">☕ 休憩（研修室1～4）</div>
-                                <div class="activity">💻 授業（研修室1～4）</div>
+                                <div class="activity">🚗 集合</div>
+                                <div class="activity">🎤 開会式</div>
+                                <div class="activity">💻 授業</div>
+                                <div class="activity">🍜 夕食</div>
+                                <div class="activity">☕ 休憩</div>
+                                <div class="activity">💻 授業</div>
                                 <div class="activity">🌙 班長会議・就寝準備</div>
                             </td>
-                        </tr>
-                        <tr class="schedule-row" data-schedule-row>
-                            <td class="day-label">
-                                <span class="day-text">2日目<br>11/23(日)</span>
-                                <span class="schedule-toggle-icon">▼</span>
+                            <td class="schedule-detail schedule-note">
+                                <div class="note-item">スタッフが案内します<br>JR城陽駅13:37発のバスも案内可能</div>
+                                <div class="note-item">アイスブレイク・班分け・Wi-Fi接続</div>
+                                <div class="note-item">Colabの使い方・Pythonの復習</div>
+                                <div class="note-item">班ごとに食事</div>
+                                <div class="note-item">各教室にスタッフ配置</div>
+                                <div class="note-item">手書き文字認識の学習</div>
+                                <div class="note-item">班長会議は21:00～<br>自由時間・質問対応可能</div>
                             </td>
+                        </tr>
+                        <tr class="schedule-row tab-content" id="schedule-day2">
                             <td class="schedule-detail">
                                 <div class="time-slot">6:00～6:30</div>
                                 <div class="time-slot">6:30～7:30</div>
@@ -201,39 +251,71 @@
                                 <div class="time-slot">12:00～13:00</div>
                                 <div class="time-slot">13:00～18:00</div>
                                 <div class="time-slot">18:00～21:00</div>
-                                <div class="time-slot">21:00～24:00</div>
+                            </td>
+                            <td class="schedule-detail schedule-location">
+                                <div class="location-item">各部屋</div>
+                                <div class="location-item">1Fレストラン</div>
+                                <div class="location-item">研修室1～3</div>
+                                <div class="location-item">研修室1～3</div>
+                                <div class="location-item">研修室1～3</div>
+                                <div class="location-item">研修室1～3</div>
+                                <div class="location-item">外・ピラミッド<br>TAKIBI1～4</div>
                             </td>
                             <td class="schedule-detail">
                                 <div class="activity">🌅 起床</div>
-                                <div class="activity">🍳 朝食（1Fレストラン）</div>
-                                <div class="activity">🌸 朝活（研修室1～3）</div>
-                                <div class="activity">💻 授業（研修室1～3）</div>
-                                <div class="activity">🍜 昼食（研修室1～3）</div>
-                                <div class="activity">💻 授業（研修室1～3）</div>
-                                <div class="activity">🍖 BBQ（外・ピラミッドTAKIBI1～4）</div>
-                                <div class="activity">🌙 班長会議・就寝準備</div>
+                                <div class="activity">🍳 朝食</div>
+                                <div class="activity">🌸 朝活</div>
+                                <div class="activity">💻 授業</div>
+                                <div class="activity">🍜 昼食</div>
+                                <div class="activity">💻 授業</div>
+                                <div class="activity">🍖 BBQ</div>
+                            </td>
+                            <td class="schedule-detail schedule-note">
+                                <div class="note-item">各班で協力して起床</div>
+                                <div class="note-item">班ごとに食事</div>
+                                <div class="note-item">全体での朝の活動</div>
+                                <div class="note-item">白黒画像のカラー化を学習</div>
+                                <div class="note-item">お弁当を教室で</div>
+                                <div class="note-item">カラー化精度向上に挑戦<br>14:00～研修室4使用可能</div>
+                                <div class="note-item">座席は自由<br>コミュニケーションを楽しもう<br>班長会議は21:00～</div>
                             </td>
                         </tr>
-                        <tr class="schedule-row" data-schedule-row>
-                            <td class="day-label">
-                                <span class="day-text">3日目<br>11/24(月・祝)</span>
-                                <span class="schedule-toggle-icon">▼</span>
-                            </td>
+                        <tr class="schedule-row tab-content" id="schedule-day3">
                             <td class="schedule-detail">
                                 <div class="time-slot">6:00～6:30</div>
                                 <div class="time-slot">6:30～7:30</div>
                                 <div class="time-slot">7:30～9:00</div>
                                 <div class="time-slot">9:00～12:00</div>
-                                <div class="time-slot">12:00～13:00</div>
+                                <div class="time-slot">12:00～12:30</div>
+                                <div class="time-slot">12:30～13:00</div>
                                 <div class="time-slot">13:00～</div>
+                            </td>
+                            <td class="schedule-detail schedule-location">
+                                <div class="location-item">各部屋</div>
+                                <div class="location-item">1Fレストラン</div>
+                                <div class="location-item">研修室1～3</div>
+                                <div class="location-item">研修室1～4</div>
+                                <div class="location-item">研修室1～3</div>
+                                <div class="location-item">全体会場</div>
+                                <div class="location-item">エントランス</div>
                             </td>
                             <td class="schedule-detail">
                                 <div class="activity">🌅 起床</div>
-                                <div class="activity">🍳 朝食（1Fレストラン）</div>
-                                <div class="activity">🌸 朝活（研修室1～3）</div>
-                                <div class="activity">💻 授業（研修室1～4）</div>
-                                <div class="activity">🏆 閉会式（全体会場）</div>
-                                <div class="activity">🏁 解散（エントランス）</div>
+                                <div class="activity">🍳 朝食</div>
+                                <div class="activity">🌸 朝活</div>
+                                <div class="activity">💻 授業</div>
+                                <div class="activity">🎤 成果発表準備</div>
+                                <div class="activity">🏆 閉会式</div>
+                                <div class="activity">🏁 解散</div>
+                            </td>
+                            <td class="schedule-detail schedule-note">
+                                <div class="note-item">各班で協力して起床</div>
+                                <div class="note-item">班ごとに食事</div>
+                                <div class="note-item">荷物を持って研修室へ</div>
+                                <div class="note-item">コンペティションの総仕上げ</div>
+                                <div class="note-item">発表スライドの最終確認</div>
+                                <div class="note-item">発表会・表彰式</div>
+                                <div class="note-item">お疲れ様でした！<br>忘れ物に注意してください</div>
                             </td>
                         </tr>
                     </tbody>
@@ -454,50 +536,122 @@
                 <h2 class="section-title">アクセス</h2>
                 
                 <div class="access-content">
-                    <!-- PC版用の従来のレイアウト -->
-                    <div class="access-info access-pc">
-                        <h3>🚗 お車でお越しの方</h3>
-                        <p>
-                            国道24号線バイパスを<br class="sp-br"><strong>京奈和自動車道方面</strong>へ進み、<br>
-                            京奈和自動車道入口より、<br class="sp-br">国道24号線にて<br>
-                            <strong>運動公園線を東へ</strong><br class="sp-br">お進みください。
-                        </p>
-                        <p class="access-note access-note-yellow">
-                            🅿️ 駐輪場は<br class="sp-br"><strong>無料（30分間）</strong>で<br class="sp-br">ご利用いただけます。
-                        </p>
+                    <!-- PC版用のタブレイアウト -->
+                    <div class="access-pc">
+                        <!-- タブメニュー -->
+                        <div class="access-tabs">
+                            <button class="access-tab-btn active" data-access-tab="car">🚗 お車でお越しの方</button>
+                            <button class="access-tab-btn" data-access-tab="train">🚃 電車・バスでお越しの方</button>
+                            <button class="access-tab-btn" data-access-tab="kyoto">🚄 京都駅からお越しの方</button>
+                        </div>
                         
-                        <h3 class="access-subtitle">🚃 電車・バスでお越しの方</h3>
-                        <p>
-                            <strong>JR奈良線・城陽駅前</strong>、<br class="sp-br">または<br class="pc-br">
-                            <strong>近鉄京都線・寺田駅前</strong><br class="sp-br">から路線バスに乗車
-                        </p>
-                        <p class="access-arrow">
-                            ↓<br>
-                            <strong>「プラムイン城陽」<br class="sp-br">停留所で下車</strong>
-                        </p>
-                        <p class="access-note access-note-blue">
-                            🚌 運賃：<strong>200円</strong>
-                        </p>
-                        
-                        <h3 class="access-subtitle">📍 住所</h3>
-                        <p>
-                            <strong>ロゴスランド京都（プラムイン城陽）</strong><br>
-                            〒610-0121<br>
-                            京都府城陽市寺田大川原24-4
-                        </p>
-                    </div>
-                
-                    <div class="map-container access-pc">
-                        <!-- Google Map埋め込み（ロゴスランド京都） -->
-                        <iframe 
-                            class="access-map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.050111020896!2d135.79500497618534!3d34.854968172865334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600116d2da8f6fdb%3A0xe0957dd752a7c4f8!2z44Ot44K044K544Op44Oz44OJIO-8iExPR09TIExBTkTvvIk!5e0!3m2!1sja!2sus!4v1762429337173!5m2!1sja!2sus" 
-                            width="600" 
-                            height="450" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                        <!-- 2カラムレイアウト -->
+                        <div class="access-layout">
+                            <!-- 左側：タブコンテンツ -->
+                            <div class="access-tab-content-wrapper">
+                                <!-- お車でお越しの方 -->
+                                <div class="access-tab-content active" id="access-car">
+                                    <div class="access-info-box">
+                                        <p>
+                                            国道24号線バイパスを<strong>京奈和自動車道方面</strong>へ進み、<br>
+                                            京奈和自動車道入口より、国道24号線にて<br>
+                                            <strong>運動公園線を東へ</strong>お進みください。
+                                        </p>
+                                        <p class="access-note access-note-yellow">
+                                            🅿️ 駐輪場は<strong>無料（30分間）</strong>でご利用いただけます。
+                                        </p>
+                                        
+                                        <h3 class="access-subtitle">📍 住所</h3>
+                                        <p>
+                                            <strong>ロゴスランド京都（プラムイン城陽）</strong><br>
+                                            〒610-0121<br>
+                                            京都府城陽市寺田大川原24-4
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <!-- 電車・バスでお越しの方 -->
+                                <div class="access-tab-content" id="access-train">
+                                    <div class="access-info-box">
+                                        <p>
+                                            <strong>JR奈良線・城陽駅前</strong>、または
+                                            <strong>近鉄京都線・寺田駅前</strong>から路線バスに乗車
+                                        </p>
+                                        <p class="access-arrow">
+                                            ↓<br>
+                                            <strong>「プラムイン城陽」停留所で下車</strong>
+                                        </p>
+                                        <p class="access-note access-note-blue">
+                                            🚌 運賃：<strong>200円</strong>
+                                        </p>
+                                        
+                                        <h3 class="access-subtitle">📍 住所</h3>
+                                        <p>
+                                            <strong>ロゴスランド京都（プラムイン城陽）</strong><br>
+                                            〒610-0121<br>
+                                            京都府城陽市寺田大川原24-4
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <!-- 京都駅からお越しの方 -->
+                                <div class="access-tab-content" id="access-kyoto">
+                                    <div class="access-info-box">
+                                        <p class="kyoto-team-label">東京・横浜チーム向け</p>
+                                        <div class="access-flow">
+                                            <div class="flow-step">
+                                                <div class="flow-number">1</div>
+                                                <div class="flow-content">
+                                                    <strong>JR京都駅</strong><br>
+                                                    <span class="flow-detail">JR奈良線に乗車</span>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+                                            <div class="flow-step">
+                                                <div class="flow-number">2</div>
+                                                <div class="flow-content">
+                                                    <strong>JR城陽駅</strong><br>
+                                                    <span class="flow-detail">約25分・運賃 <strong class="fare-highlight">420円</strong></span>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+                                            <div class="flow-step">
+                                                <div class="flow-number">3</div>
+                                                <div class="flow-content">
+                                                    <strong>城陽駅前バス停</strong><br>
+                                                    <span class="flow-detail">路線バスに乗車</span>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+                                            <div class="flow-step">
+                                                <div class="flow-number">4</div>
+                                                <div class="flow-content">
+                                                    <strong>プラムイン城陽</strong><br>
+                                                    <span class="flow-detail">約10分・運賃 <strong class="fare-highlight">200円</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="access-note access-note-green">
+                                            💰 <strong>合計運賃：620円</strong>（京都駅～プラムイン城陽）
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 右側：地図 -->
+                            <div class="map-container">
+                                <!-- Google Map埋め込み（ロゴスランド京都） -->
+                                <iframe 
+                                    class="access-map"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.050111020896!2d135.79500497618534!3d34.854968172865334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600116d2da8f6fdb%3A0xe0957dd752a7c4f8!2z44Ot44K044K544Op44Oz44OJIO-8iExPR09TIExBTkTvvIk!5e0!3m2!1sja!2sus!4v1762429337173!5m2!1sja!2sus" 
+                                    width="600" 
+                                    height="450" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- SP版用のトグル形式 -->
@@ -535,6 +689,51 @@
                                 </p>
                                 <p class="access-note access-note-blue">
                                     🚌 運賃：<strong>200円</strong>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="access-item" data-access-item>
+                            <div class="access-item-header">
+                                <span class="access-item-title">🚄 京都駅からお越しの方</span>
+                                <span class="access-toggle-icon">▼</span>
+                            </div>
+                            <div class="access-item-content">
+                                <div class="access-flow-mobile">
+                                    <div class="flow-step-mobile">
+                                        <div class="flow-number-mobile">1</div>
+                                        <div class="flow-text">
+                                            <strong>JR京都駅</strong><br>
+                                            <span>JR奈良線に乗車</span>
+                                        </div>
+                                    </div>
+                                    <div class="flow-arrow-mobile">↓</div>
+                                    <div class="flow-step-mobile">
+                                        <div class="flow-number-mobile">2</div>
+                                        <div class="flow-text">
+                                            <strong>JR城陽駅</strong><br>
+                                            <span>約25分・運賃 <strong>420円</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="flow-arrow-mobile">↓</div>
+                                    <div class="flow-step-mobile">
+                                        <div class="flow-number-mobile">3</div>
+                                        <div class="flow-text">
+                                            <strong>城陽駅前バス停</strong><br>
+                                            <span>路線バスに乗車</span>
+                                        </div>
+                                    </div>
+                                    <div class="flow-arrow-mobile">↓</div>
+                                    <div class="flow-step-mobile">
+                                        <div class="flow-number-mobile">4</div>
+                                        <div class="flow-text">
+                                            <strong>プラムイン城陽</strong><br>
+                                            <span>約10分・運賃 <strong>200円</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="access-note access-note-green">
+                                    💰 <strong>合計運賃：620円</strong>
                                 </p>
                             </div>
                         </div>

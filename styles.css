@@ -158,6 +158,13 @@ a {
   transform: translateX(5px);
 }
 
+.sidebar-nav a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid var(--color-white);
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* サブメニュー（ドロップダウン） */
 .sidebar-nav .has-submenu {
   position: relative;
@@ -433,6 +440,62 @@ a {
 }
 
 /* ============================================
+   ご案内セクション
+   ============================================ */
+
+.guide-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  background-color: var(--color-white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.guide-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.guide-main {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.guide-detail {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.guide-note {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  background-color: var(--color-pastel-yellow);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.guide-image {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  max-width: 100%;
+}
+
+.guide-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
    開催情報バー（開催概要）
    ============================================ */
 
@@ -531,6 +594,57 @@ a {
    スケジュール表
    ============================================ */
 
+/* タブメニュー */
+.schedule-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(14, 139, 98, 0.05) 0%, rgba(14, 139, 98, 0.02) 100%);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.schedule-tabs .tab-btn {
+  flex: 1;
+  min-width: 150px;
+  padding: 1.2rem 2rem;
+  background: white;
+  border: 2px solid rgba(14, 139, 98, 0.2);
+  border-radius: 10px;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.schedule-tabs .tab-btn:hover {
+  background: linear-gradient(135deg, rgba(14, 139, 98, 0.1) 0%, rgba(14, 139, 98, 0.05) 100%);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(14, 139, 98, 0.2);
+}
+
+.schedule-tabs .tab-btn.active {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0a6d4d 100%);
+  border-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 4px 16px rgba(14, 139, 98, 0.3);
+  transform: scale(1.02);
+}
+
+.schedule-tabs .tab-btn:focus {
+  outline: none;
+}
+
+.schedule-tabs .tab-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
 .schedule-table {
   width: 100%;
   border-collapse: separate;
@@ -539,6 +653,16 @@ a {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-soft);
   background-color: var(--color-white);
+  table-layout: fixed;
+}
+
+.schedule-row.tab-content {
+  display: none;
+}
+
+.schedule-row.tab-content.active {
+  display: table-row;
+  animation: fadeIn 0.3s ease;
 }
 
 .schedule-table th {
@@ -550,25 +674,68 @@ a {
   font-size: 1.1rem;
 }
 
+.schedule-table th:nth-child(1) {
+  width: 150px;
+}
+
+.schedule-table th:nth-child(2) {
+  width: 160px;
+}
+
+.schedule-table th:nth-child(3) {
+  width: 25%;
+}
+
+.schedule-table th:nth-child(4) {
+  width: auto;
+}
+
 .schedule-table td {
-  padding: 1.5rem 1.2rem;
-  border-bottom: 1px solid #f0f0f0;
-  vertical-align: top;
+  padding: 0;
+  border-bottom: none;
+  vertical-align: middle;
+}
+
+.schedule-table td:nth-child(1) {
+  width: 150px;
+}
+
+.schedule-table td:nth-child(2) {
+  width: 160px;
+}
+
+.schedule-table td:nth-child(3) {
+  width: 25%;
+}
+
+.schedule-table td:nth-child(4) {
+  width: auto;
 }
 
 .schedule-table tr:last-child td {
   border-bottom: none;
 }
 
-.schedule-table tr:hover {
-  background-color: #f9f9f9;
+/* テーブル行の背景をリセット */
+.schedule-table tbody tr {
+  background-color: transparent;
 }
 
-.day-label {
-  font-weight: bold;
-  color: var(--color-secondary);
-  font-size: 1.1rem;
-  position: relative;
+.schedule-detail {
+  vertical-align: middle;
+  padding: 0;
+}
+
+.note-item {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+
+.location-item {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  background-color: transparent;
 }
 
 .schedule-toggle-icon {
@@ -581,37 +748,40 @@ a {
   transition: transform 0.3s ease;
 }
 
-.time-slot,
-.activity {
-  padding: 0.6rem 0.5rem;
-  margin-bottom: 0.3rem;
+.schedule-detail > div {
+  padding: 0.6rem 1.2rem;
+  margin-bottom: 0;
   display: flex;
   align-items: center;
-  border-radius: 4px;
+  justify-content: flex-start;
+  border-radius: 0;
   line-height: 1.6;
-  height: 2.8rem;
+  min-height: 5.5rem;
+  box-sizing: border-box;
 }
 
-.time-slot:last-child,
-.activity:last-child {
-  margin-bottom: 0;
-}
-
+/* 時間スロット */
 .time-slot {
-  color: var(--color-text-light);
+  color: var(--color-primary);
   font-size: 0.95rem;
-  font-weight: 600;
-  background-color: rgba(14, 139, 98, 0.05);
+  font-weight: bold;
+  background-color: transparent;
 }
 
+/* アクティビティ */
 .activity {
   color: var(--color-text);
   font-size: 1rem;
-  transition: background-color 0.2s ease;
+  background-color: transparent;
 }
 
-.activity:hover {
-  background-color: rgba(244, 127, 46, 0.05);
+/* 各行の背景色（偶数行のみ） */
+.schedule-detail > div:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.schedule-detail > div:nth-child(even) {
+  background-color: rgba(168, 213, 226, 0.2);
 }
 
 /* ============================================
@@ -668,10 +838,89 @@ a {
    ============================================ */
 
 .access-content {
+  width: 100%;
+}
+
+/* アクセスタブ */
+.access-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.access-tab-btn {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  bottom: -2px;
+}
+
+.access-tab-btn:hover {
+  color: var(--color-primary);
+  background: rgba(168, 213, 226, 0.1);
+}
+
+.access-tab-btn.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  background: transparent;
+}
+
+.access-tab-btn:focus {
+  outline: none;
+}
+
+.access-tab-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* 2カラムレイアウト */
+.access-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: start;
+}
+
+.access-tab-content-wrapper {
+  min-width: 0;
+}
+
+.access-tab-content {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.access-tab-content.active {
+  display: block;
+}
+
+.access-info-box {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fffe 0%, #e8f5f3 100%);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.kyoto-team-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
 .access-info {
@@ -718,8 +967,137 @@ a {
   background-color: var(--color-pastel-blue);
 }
 
+.access-note-green {
+  background-color: rgba(168, 213, 226, 0.3);
+  border-left: 4px solid var(--color-primary);
+}
+
+.access-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flow-step:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.flow-number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 50%;
+}
+
+.flow-content {
+  flex: 1;
+}
+
+.flow-content strong {
+  color: var(--color-secondary);
+  font-size: 1.1rem;
+}
+
+.flow-detail {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
+.fare-highlight {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+.flow-arrow {
+  text-align: center;
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.3rem 0;
+}
+
+/* SP版のアクセスフロー */
+.access-flow-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.flow-step-mobile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.flow-number-mobile {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
+.flow-text {
+  flex: 1;
+}
+
+.flow-text strong {
+  color: var(--color-secondary);
+}
+
+.flow-text span {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.flow-arrow-mobile {
+  text-align: center;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.2rem 0;
+}
+
 .access-map {
   border: 0;
+}
+
+.access-layout .map-container {
+  position: sticky;
+  top: 100px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
 }
 
 /* SP版用のアクセス項目（デフォルトで非表示） */
@@ -1321,6 +1699,11 @@ a {
     font-size: 1rem;
   }
   
+  .sidebar-nav a.active {
+    background-color: rgba(255, 255, 255, 0.25);
+    border: 2px solid var(--color-white);
+  }
+  
   .main-content {
     margin-left: 0;
   }
@@ -1359,6 +1742,26 @@ a {
   .hero-location {
     font-size: 0.95rem;
     margin-bottom: 0;
+  }
+  
+  /* ご案内セクションのSP版スタイル */
+  .guide-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .guide-main {
+    font-size: 1.2rem;
+  }
+  
+  .guide-detail {
+    font-size: 1rem;
+  }
+  
+  .guide-note {
+    font-size: 0.9rem;
+    padding: 0.8rem;
   }
   
   /* 開催情報バーをSP版で2列横並びに */
@@ -1407,6 +1810,29 @@ a {
   
   .card-grid {
     grid-template-columns: 1fr;
+  }
+  
+  /* タブメニューのSP版スタイル */
+  .schedule-tabs {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
+    flex-direction: column;
+  }
+  
+  .schedule-tabs .tab-btn {
+    padding: 1rem;
+    font-size: 0.95rem;
+    min-width: 0;
+    width: 100%;
+  }
+  
+  .schedule-tabs .tab-btn.active {
+    transform: scale(1);
+  }
+  
+  .schedule-tabs .tab-btn:hover {
+    transform: translateY(0);
   }
   
   /* プログラムカードのトグル機能をSP版で有効化 */
@@ -1628,6 +2054,25 @@ a {
     font-size: 0.9rem;
   }
   
+  /* ご案内セクションのさらに小さい画面用スタイル */
+  .guide-content {
+    padding: 1.2rem;
+    gap: 1.2rem;
+  }
+  
+  .guide-main {
+    font-size: 1.1rem;
+  }
+  
+  .guide-detail {
+    font-size: 0.95rem;
+  }
+  
+  .guide-note {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+  }
+  
   /* 開催情報バーをさらにコンパクトに */
   .overview-section {
     padding: 1.5rem 0.5rem;
@@ -1739,6 +2184,17 @@ a:focus,
 button:focus,
 input:focus {
   outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* サイドバーメニューのフォーカス表示を調整 */
+.sidebar-nav a:focus {
+  outline: none;
+}
+
+/* キーボード操作時のみフォーカスを表示 */
+.sidebar-nav a:focus-visible {
+  outline: 2px solid var(--color-white);
   outline-offset: 2px;
 }
 

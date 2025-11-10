@@ -97,9 +97,80 @@
     margin-bottom: 1rem;
 }
 
+/* タブメニュー */
+.schedule-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, rgba(14, 139, 98, 0.05) 0%, rgba(14, 139, 98, 0.02) 100%);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.tab-btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 1.2rem 2rem;
+    background: white;
+    border: 2px solid rgba(14, 139, 98, 0.2);
+    border-radius: 10px;
+    color: var(--color-text);
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-btn:hover {
+    background: linear-gradient(135deg, rgba(14, 139, 98, 0.1) 0%, rgba(14, 139, 98, 0.05) 100%);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 139, 98, 0.2);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #0a6d4d 100%);
+    border-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 16px rgba(14, 139, 98, 0.3);
+    transform: scale(1.02);
+}
+
+.tab-btn:focus {
+    outline: none;
+}
+
+.tab-btn:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
 /* 詳細スケジュールテーブル */
 .detailed-schedule {
-    margin-top: 2rem;
+    margin-top: 0;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .detailed-schedule table {
@@ -121,26 +192,28 @@
 }
 
 .detailed-schedule td {
-    padding: 1rem;
-    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 1.2rem;
+    vertical-align: middle;
+    border-bottom: none;
+    min-height: 5.5rem;
+    line-height: 1.6;
 }
 
 .detailed-schedule tr:last-child td {
     border-bottom: none;
 }
 
-/* 行の交互の背景色（ストライプ） */
-.detailed-schedule tbody tr:nth-child(odd) {
-    background: #f9f9f9;
+/* 行の交互の背景色（偶数行のみ） */
+.detailed-schedule tbody tr {
+    background: transparent;
 }
 
-.detailed-schedule tbody tr:nth-child(even) {
+.detailed-schedule tbody tr:nth-child(odd) {
     background: #ffffff;
 }
 
-.detailed-schedule tbody tr:hover {
-    background: #f0f7f4;
-    transition: background 0.2s ease;
+.detailed-schedule tbody tr:nth-child(even) {
+    background: rgba(168, 213, 226, 0.2);
 }
 
 .detailed-schedule .time-col {
@@ -169,23 +242,36 @@
 }
 
 .day-section {
-    margin-bottom: 3rem;
-}
-
-.day-title {
-    font-size: 1.8rem;
-    color: #ffffff !important;
-    background: linear-gradient(135deg, var(--color-primary) 0%, #0a6d4d 100%);
-    margin-bottom: 1rem;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow-soft);
+    margin-bottom: 0;
 }
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .password-box {
         padding: 2rem;
+    }
+    
+    /* タブメニューのSP版スタイル */
+    .schedule-tabs {
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        padding: 0.8rem;
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        padding: 1rem;
+        font-size: 0.95rem;
+        min-width: 0;
+        width: 100%;
+    }
+    
+    .tab-btn.active {
+        transform: scale(1);
+    }
+    
+    .tab-btn:hover {
+        transform: translateY(0);
     }
     
     /* スケジュールテーブルをカード形式に */

@@ -150,8 +150,59 @@ function initStaffItemsToggle() {
     });
 }
 
+// ============================================
+// スケジュールタブ切り替え機能
+// ============================================
+
+/**
+ * スケジュールタブの切り替え機能を初期化
+ */
+function initScheduleTabs() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if (tabButtons.length === 0 || tabContents.length === 0) return;
+    
+    // 初期状態でアクティブなタブの絵文字を🍁に変更
+    const initialActiveTab = document.querySelector('.tab-btn.active');
+    if (initialActiveTab) {
+        updateTabEmoji(initialActiveTab, true);
+    }
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // すべてのタブボタンの絵文字を📅に戻す
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active');
+                updateTabEmoji(btn, false);
+            });
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // クリックされたタブボタンとそのコンテンツにactiveクラスを追加
+            this.classList.add('active');
+            updateTabEmoji(this, true);
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
+}
+
+/**
+ * タブボタンの絵文字を更新
+ * @param {HTMLElement} button - タブボタン要素
+ * @param {boolean} isActive - アクティブ状態かどうか
+ */
+function updateTabEmoji(button, isActive) {
+    const emojiSpan = button.querySelector('.tab-emoji');
+    if (emojiSpan) {
+        emojiSpan.textContent = isActive ? '🍁' : '📅';
+    }
+}
+
 // ページ読み込み時に初期化
 document.addEventListener('DOMContentLoaded', function() {
     initStaffItemsToggle();
+    initScheduleTabs();
 });
 

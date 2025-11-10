@@ -35,6 +35,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // フロアマップのトグル機能を初期化（SP版のみ）
   initFloormapToggle();
   
+  // スクロールスパイ機能を初期化
+  initScrollSpy();
+  
+  // スケジュールタブの切り替え機能を初期化
+  initScheduleTabs();
+  
+  // アクセスタブの切り替え機能を初期化
+  initAccessTabs();
+  
 });
 
 /**
@@ -448,6 +457,178 @@ function initFloormapToggle() {
         item.classList.remove('active');
       });
     }
+  });
+}
+
+/**
+ * スクロールスパイ機能
+ * ページをスクロールした際に、現在表示されているセクションに対応するメニューをハイライト
+ */
+function initScrollSpy() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sidebar-nav a[href^="#"]');
+  
+  if (sections.length === 0 || navLinks.length === 0) {
+    return;
+  }
+  
+  // 各セクションのIDとメニューリンクのマップを作成
+  const linkMap = new Map();
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href !== '#') {
+      linkMap.set(href.substring(1), link);
+    }
+  });
+  
+  // Intersection Observer のオプション
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px', // 上部20%、下部70%の範囲でトリガー
+    threshold: 0
+  };
+  
+  // 現在アクティブなセクションを追跡
+  let currentActiveSection = null;
+  
+  // Intersection Observer のコールバック
+  const observerCallback = (entries) => {
+    entries.forEach(entry => {
+      const sectionId = entry.target.id;
+      const link = linkMap.get(sectionId);
+      
+      if (!link) return;
+      
+      if (entry.isIntersecting) {
+        // セクションが表示されている場合
+        // 既存のアクティブ状態をクリア
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        
+        // 現在のセクションのリンクをアクティブに
+        link.classList.add('active');
+        currentActiveSection = sectionId;
+      }
+    });
+  };
+  
+  // Intersection Observer を作成
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  
+  // 各セクションを監視
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+  
+  // メニューをクリックした時にもアクティブ状態を更新
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const href = this.getAttribute('href');
+      if (href && href !== '#') {
+        // 全てのアクティブ状態をクリア
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        // クリックされたリンクをアクティブに
+        this.classList.add('active');
+      }
+    });
+  });
+  
+  // ページ読み込み時に初期状態を設定
+  setTimeout(() => {
+    const scrollPosition = window.scrollY;
+    let foundActive = false;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      
+      if (scrollPosition >= sectionTop - 100 && scrollPosition < sectionTop + sectionHeight - 100) {
+        const link = linkMap.get(section.id);
+        if (link) {
+          navLinks.forEach(navLink => navLink.classList.remove('active'));
+          link.classList.add('active');
+          foundActive = true;
+        }
+      }
+    });
+    
+    // どのセクションにも該当しない場合は、最初のリンク（トップ）をアクティブに
+    if (!foundActive && navLinks.length > 0) {
+      navLinks[0].classList.add('active');
+    }
+  }, 100);
+}
+
+/**
+ * スケジュールタブの切り替え機能
+ */
+function initScheduleTabs() {
+  const tabButtons = document.querySelectorAll('.schedule-tabs .tab-btn');
+  const tabContents = document.querySelectorAll('.schedule-row.tab-content');
+  
+  if (tabButtons.length === 0 || tabContents.length === 0) return;
+  
+  // 初期状態でアクティブなタブの絵文字を🍁に変更
+  const initialActiveTab = document.querySelector('.schedule-tabs .tab-btn.active');
+  if (initialActiveTab) {
+    updateScheduleTabEmoji(initialActiveTab, true);
+  }
+  
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetTab = this.getAttribute('data-tab');
+      
+      // すべてのタブボタンの絵文字を📅に戻す
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
+        updateScheduleTabEmoji(btn, false);
+      });
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // クリックされたタブボタンとそのコンテンツにactiveクラスを追加
+      this.classList.add('active');
+      updateScheduleTabEmoji(this, true);
+      document.getElementById(targetTab).classList.add('active');
+    });
+  });
+}
+
+/**
+ * スケジュールタブボタンの絵文字を更新
+ * @param {HTMLElement} button - タブボタン要素
+ * @param {boolean} isActive - アクティブ状態かどうか
+ */
+function updateScheduleTabEmoji(button, isActive) {
+  const emojiSpan = button.querySelector('.tab-emoji');
+  if (emojiSpan) {
+    emojiSpan.textContent = isActive ? '🍁' : '📅';
+  }
+}
+
+/**
+ * アクセスタブの切り替え機能
+ * お車/電車・バス/京都駅からのアクセス情報をタブで切り替え
+ */
+function initAccessTabs() {
+  const tabButtons = document.querySelectorAll('.access-tab-btn');
+  const tabContents = document.querySelectorAll('.access-tab-content');
+  
+  if (tabButtons.length === 0 || tabContents.length === 0) return;
+  
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetTab = this.getAttribute('data-access-tab');
+      
+      // すべてのタブボタンとコンテンツからactiveクラスを削除
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // クリックされたタブボタンとそのコンテンツにactiveクラスを追加
+      this.classList.add('active');
+      const targetContent = document.getElementById('access-' + targetTab);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
   });
 }
 

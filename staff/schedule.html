@@ -93,10 +93,22 @@
                         スタッフ向けの詳細なスケジュールです。準備物や担当者の情報も含まれています。
                     </p>
 
+                    <!-- タブメニュー -->
+                    <div class="schedule-tabs">
+                        <button class="tab-btn active" data-tab="day1">
+                            <span class="tab-emoji">📅</span> 1日目 - 11/22(土)
+                        </button>
+                        <button class="tab-btn" data-tab="day2">
+                            <span class="tab-emoji">📅</span> 2日目 - 11/23(日)
+                        </button>
+                        <button class="tab-btn" data-tab="day3">
+                            <span class="tab-emoji">📅</span> 3日目 - 11/24(月祝)
+                        </button>
+                    </div>
+
                     <div class="detailed-schedule">
                         <!-- 1日目 -->
-                        <div class="day-section">
-                            <h3 class="day-title">📅 1日目 - 11月22日（土）</h3>
+                        <div class="day-section tab-content active" id="day1">
                             <table>
                                 <thead>
                                     <tr>
@@ -147,7 +159,7 @@
                                         <td class="time-col">19:00<br>～21:00</td>
                                         <td class="location-col">研修室1,2<br>研修室3,4</td>
                                         <td class="activity-col">💻 授業（4区画）</td>
-                                        <td class="note-col"><strong>授業担当:</strong> 井ノ本<br><strong>サポーター:</strong> 黒田・中村・前田<br><strong>教室:</strong> 研修室1,2<br><strong>テーマ:</strong><br><br><strong>授業担当:</strong> 藤原<br><strong>サポーター:</strong> 諸坊・市川<br><strong>教室:</strong> 研修室3<br><strong>テーマ:</strong></td>
+                                        <td class="note-col"><strong>授業担当:</strong> 井ノ本<br><strong>サポーター:</strong> 黒田・中村・前田<br><strong>教室:</strong> 研修室1,2<br><strong>テーマ:</strong><br><br><strong>授業担当:</strong> 藤原<br><strong>サポーター:</strong> 諏訪・市川<br><strong>教室:</strong> 研修室3<br><strong>テーマ:</strong></td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">21:00<br>～24:00</td>
@@ -160,8 +172,7 @@
                         </div>
 
                         <!-- 2日目 -->
-                        <div class="day-section">
-                            <h3 class="day-title">📅 2日目 - 11月23日（日）</h3>
+                        <div class="day-section tab-content" id="day2">
                             <table>
                                 <thead>
                                     <tr>
@@ -194,7 +205,7 @@
                                         <td class="time-col">9:00<br>～12:00</td>
                                         <td class="location-col">研修室1～3</td>
                                         <td class="activity-col">💻 授業（研修室1～3）</td>
-                                        <td class="note-col"><strong>授業担当:</strong> 井ノ本<br><strong>サポーター:</strong> 黒田・中村・前田<br><strong>教室:</strong> 研修室1,2<br><strong>テーマ:</strong><br><br><strong>授業担当:</strong> 藤原<br><strong>サポーター:</strong> 諸坊・市川<br><strong>教室:</strong> 研修室3<br><strong>テーマ:</strong><br><br>⚠️ <strong>10:00～11:00 屋内で楽器演奏あり（音量に注意）</strong></td>
+                                        <td class="note-col"><strong>授業担当:</strong> 井ノ本<br><strong>サポーター:</strong> 黒田・中村・前田<br><strong>教室:</strong> 研修室1,2<br><strong>テーマ:</strong><br><br><strong>授業担当:</strong> 藤原<br><strong>サポーター:</strong> 諏訪・市川<br><strong>教室:</strong> 研修室3<br><strong>テーマ:</strong><br><br>⚠️ <strong>10:00～11:00 屋内で楽器演奏あり（音量に注意）</strong></td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">12:00<br>～13:00</td>
@@ -206,7 +217,7 @@
                                         <td class="time-col">13:00<br>～18:00</td>
                                         <td class="location-col">研修室1～3</td>
                                         <td class="activity-col">💻 授業<br>（14:00～研修室4使用可能）</td>
-                                        <td class="note-col"><strong>授業担当:</strong> 井ノ本<br><strong>サポーター:</strong> 黒田・中村・前田<br><strong>教室:</strong> 研修室1,2<br><strong>テーマ:</strong><br><br><strong>授業担当:</strong> 藤原<br><strong>サポーター:</strong> 諸坊・市川<br><strong>教室:</strong> 研修室3<br><strong>テーマ:</strong><br><br>⚠️ <strong>13:00～14:00 屋内で楽器演奏あり（音量に注意）</strong></td>
+                                        <td class="note-col"><strong>授業担当:</strong> 井ノ本<br><strong>サポーター:</strong> 黒田・中村・前田<br><strong>教室:</strong> 研修室1,2<br><strong>テーマ:</strong><br><br><strong>授業担当:</strong> 藤原<br><strong>サポーター:</strong> 諏訪・市川<br><strong>教室:</strong> 研修室3<br><strong>テーマ:</strong><br><br>⚠️ <strong>13:00～14:00 屋内で楽器演奏あり（音量に注意）</strong></td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">18:00<br>～21:00</td>
@@ -225,8 +236,7 @@
                         </div>
 
                         <!-- 3日目 -->
-                        <div class="day-section">
-                            <h3 class="day-title">📅 3日目 - 11月24日（月祝）</h3>
+                        <div class="day-section tab-content" id="day3">
                             <table>
                                 <thead>
                                     <tr>
@@ -259,7 +269,7 @@
                                         <td class="time-col">9:00<br>～12:00</td>
                                         <td class="location-col">研修室1,2<br>研修室3,4</td>
                                         <td class="activity-col">💻 授業（4区画）</td>
-                                        <td class="note-col"><strong>授業担当:</strong> 井ノ本<br><strong>サポーター:</strong> 黒田・前田<br><strong>教室:</strong> 研修室1,2<br><strong>テーマ:</strong><br><br><strong>授業担当:</strong> 藤原<br><strong>サポーター:</strong> 諸坊・市川<br><strong>教室:</strong> 研修室3,4<br><strong>テーマ:</strong><br><br>⚠️ <strong>11:00～12:30 屋内で楽器演奏あり（音量に注意・閉会式にも影響）</strong></td>
+                                        <td class="note-col"><strong>授業担当:</strong> 井ノ本<br><strong>サポーター:</strong> 黒田・前田<br><strong>教室:</strong> 研修室1,2<br><strong>テーマ:</strong><br><br><strong>授業担当:</strong> 藤原<br><strong>サポーター:</strong> 諏訪・市川<br><strong>教室:</strong> 研修室3,4<br><strong>テーマ:</strong><br><br>⚠️ <strong>11:00～12:30 屋内で楽器演奏あり（音量に注意・閉会式にも影響）</strong></td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">12:00<br>～13:00</td>
